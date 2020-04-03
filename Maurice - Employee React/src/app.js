@@ -9,8 +9,6 @@ function App() {
     <div>
       <Header />
       <br></br>
-      <Search />
-      <br></br>
       <Table />
       {/* <User />   */}
     </div>
