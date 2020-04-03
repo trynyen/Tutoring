@@ -98,29 +98,60 @@ const employees = [
 ];
 class table extends React.Component {
     state = {
-        employees: employees
-    }
-    sortByName = () => {
-
-    }
-    startSearch = e => {
-        console.log(e.target.value);
-        const searchValue = e.target.value; //Filtering the Employees Array
-        console.log(this.state.employees);
-        const employeeArray = this.state.employees;
-        const employeeResult = employeeArray.filter(employee => {
-            let employeeName = Object.values(employee).join("").toLowerCase()
-            console.log(employeeName);
-            return employeeName.indexOf(searchValue.toLowerCase()) !==-1
-        });
-        console.log(employeeResult)
-        this.setState({employees: employeeResult})
+        employees: employees,
+        filteredEmployee: employees,
+        // sort: "descend"
     }
 
-    render() {
-        return (
-            <>
-            <Search startSearch = {this.startSearch}/>
+
+    // sortOrder = order => {
+    //     if (this.state.sort === "descend") {
+    //         this.setState({
+    //             sort: "ascend"
+    //         })
+    //     } else {
+    //         this.setState({
+    //             sort: "descend"
+    //         })
+    //     }
+
+    //     const sortByName = (a, b) => {
+    //         if (this.state.order === "ascend") {
+                
+    //         } 
+
+    //     }
+    //     const sortedEmployees = this.state.filteredEmployee.sort(sortOrder);
+    //     this.setState({ filteredUsers: sortedEmployees });
+    // }
+
+startSearch = e => {
+    console.log(e.target.value);
+    const searchValue = e.target.value; //Filtering the Employees Array
+    console.log(this.state.employees);
+    const employeeArray = this.state.employees;
+    const employeeResult = employeeArray.filter(employee => {
+        let employeeName = Object.values(employee.name).join("").toLowerCase()
+        // let employeeName = employee.name
+        console.log(employeeName.toLowerCase());
+        // let test = Object.values(employeeName).join("").toLowerCase()
+        // console.log(test)
+        return employeeName.indexOf(searchValue.toLowerCase()) !== -1
+    });
+    console.log(employeeResult)
+    this.setState({ filteredEmployee: employeeResult })
+}
+// componentDidMount() {
+//       console.log(employees)
+//       this.setState({
+//         employees: employees,
+//         filteredEmployee: employees
+//       });
+//   }
+render() {
+    return (
+        <>
+            <Search startSearch={this.startSearch} />
 
             <div className="card mt-4">
                 {/* {this.startSearch()} */}
@@ -135,7 +166,7 @@ class table extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.employees.map(props => (
+                        {this.state.filteredEmployee.map(props => (
                             <tr key={props.id}>
                                 <td className="image"><img alt={props.name} src={props.image} /></td>
                                 <td>{props.name}</td>
@@ -147,10 +178,10 @@ class table extends React.Component {
                     </tbody>
                 </table>
             </div>
-      </>
+        </>
 
-        );
-    }
+    );
+}
 }
 
 export default table;
