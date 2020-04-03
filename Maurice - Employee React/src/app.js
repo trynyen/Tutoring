@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "./components/header/header";
-import Search from "./components/search/search";
 import Table from "./components/table/table";
 // import User from "./components/user/user";
 
