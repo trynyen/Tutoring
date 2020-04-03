@@ -1,10 +1,11 @@
 import React from "react";
 import "../table/table.css";
+import Search from "../search/search";
 
 const employees = [
 
     {
-        "id": "1",
+        "id": 1,
         "name": "Andrew smith",
         "image":
             "http://www.gravatar.com/avatar/?d=mm",
@@ -13,7 +14,7 @@ const employees = [
         "dob": "11/09/1985"
     },
     {
-        "id": "2",
+        "id": 2,
         "name": "Adam David",
         "image":
             "http://www.gravatar.com/avatar/?d=mm",
@@ -22,7 +23,7 @@ const employees = [
         "dob": "08/17/1973"
     },
     {
-        "id": "3",
+        "id": 3,
         "name": "Ken Edwardds",
         "image":
             "http://www.gravatar.com/avatar/?d=mm",
@@ -31,7 +32,7 @@ const employees = [
         "dob": "02/08/1945"
     },
     {
-        "id": "4",
+        "id": 4,
         "name": "Sarah Jacobs",
         "image":
             "http://www.gravatar.com/avatar/?d=mm",
@@ -102,21 +103,27 @@ class table extends React.Component {
     sortByName = () => {
 
     }
-    search = () => { //Filtering the Employees Array
-        console.log(this.state.employees)
-        const employeeArray = this.state.employees
-        const result = employeeArray.filter(employee => {
-            let employeeName = employee.name
-            console.log(employeeName)
+    startSearch = e => {
+        console.log(e.target.value);
+        const searchValue = e.target.value; //Filtering the Employees Array
+        console.log(this.state.employees);
+        const employeeArray = this.state.employees;
+        const employeeResult = employeeArray.filter(employee => {
+            let employeeName = Object.values(employee).join("").toLowerCase()
+            console.log(employeeName);
+            return employeeName.indexOf(searchValue.toLowerCase()) !==-1
         });
-        console.log(result)
+        console.log(employeeResult)
+        this.setState({employees: employeeResult})
     }
 
     render() {
         return (
+            <>
+            <Search startSearch = {this.startSearch}/>
 
             <div className="card mt-4">
-                {this.search()}
+                {/* {this.startSearch()} */}
                 <table>
                     <thead>
                         <tr>
@@ -140,6 +147,8 @@ class table extends React.Component {
                     </tbody>
                 </table>
             </div>
+      </>
+
         );
     }
 }
