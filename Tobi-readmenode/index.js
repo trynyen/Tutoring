@@ -109,8 +109,8 @@ promptUser()
     generateReadMeAPI
     .getUser(answers.username)
     .then(data => {
-    appendFile("README.md", data);
-    // console.log(data)
+    // appendFile("README.md", data);
+    console.log(data)
 
     });
     // console.log("readme" + readme)

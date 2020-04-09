@@ -15,7 +15,7 @@ var generateReadMeAPI = {
         const clientId = "7bd2737f5823d55149c7";
         const clientSecret = "6807444eed3fc93dc27eb02c681689249a6a465d"
         const queryUrl = `https://api.github.com/users/${username}?client_id=${clientId}&client_secret=${clientSecret}`;
-        return axios
+         axios
             .get(queryUrl).then(function (res) {
                 let gitEmail = res.data.email
                 let gitImage = res.data.avatar_url

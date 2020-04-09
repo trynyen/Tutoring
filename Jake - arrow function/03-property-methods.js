@@ -6,12 +6,9 @@ var dog = {
   makeSound: function() {
     console.log(this);
   },
-  readTag: () => {
-    var cat = {
-      name:"Kitty"
-    }
-    console.log("The dog's tag reads: " + JSON.stringify(this) + ".")
-  }
+  readTag: () => 
+    console.log("The dog's tag reads: " + this.sound + ".")
+  
 };
 
 // Prints `undefined`
