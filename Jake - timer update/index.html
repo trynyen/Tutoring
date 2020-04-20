@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  
+  <div id="timer"></div>
+
+
+  <script>
+    let timer = document.querySelector("#timer");
+
+    function resetTime() {
+      let date = new Date();
+      let h = date.getHours();
+      let m = date.getMinutes();
+      let s = date.getSeconds();
+      console.log(`${h}:${m}:${s}`)
+      timer.textContent = `${h}:${m}:${s}`
+    }
+    setInterval(resetTime, 1000)
+
+  </script>
 </body>
+
 </html>
