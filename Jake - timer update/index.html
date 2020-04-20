@@ -12,6 +12,7 @@
 
 
   <script>
+
     let timer = document.querySelector("#timer");
 
     function resetTime() {
@@ -22,6 +23,7 @@
       console.log(`${h}:${m}:${s}`)
       timer.textContent = `${h}:${m}:${s}`
     }
+    
     setInterval(resetTime, 1000)
 
   </script>
