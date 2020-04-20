@@ -15,8 +15,8 @@ function writeToFile(fileName, data) {
 
 function init() {
     inquirer.prompt(questions).then(function(data) {
-        api.getUser(data.githubUsername).then (response => {
-            console.log(response);
+        api.getUser(data.githubUsername).then(function(response) {
+            console.log(response.data.avatar_url);
         });
     });
 }
