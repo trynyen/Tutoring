@@ -20,10 +20,18 @@
       let h = date.getHours();
       let m = date.getMinutes();
       let s = date.getSeconds();
+      if(s < 10){
+      console.log(`${h}:${m}:0${s}`)
+      timer.textContent = `${h}:${m}:0${s}`
+      }
+      else {
       console.log(`${h}:${m}:${s}`)
       timer.textContent = `${h}:${m}:${s}`
+      }
+      //another way to write it
+      // return s < 10 ? timer.textContent = `${h}:${m}:0${s}` : timer.textContent = `${h}:${m}:${s}`
     }
-    
+
     setInterval(resetTime, 1000)
 
   </script>
