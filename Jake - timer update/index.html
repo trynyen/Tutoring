@@ -15,15 +15,15 @@
 
     let timer = document.querySelector("#timer");
 
-    function resetTime() {
+    const resetTime = () => {
 
       let date = new Date();
 
-      //Option 1: using moment.js
-      //Remember to add moment CDN to file (line 52)
-      // var formattedDate = moment(date).format("hh:mm:ss")
-      // console.log(formattedDate)
-      // timer.textContent = formattedDate
+      // Option 1: using moment.js
+      // Remember to add moment CDN to file (line 52)
+      var formattedDate = moment(date).format("hh:mm:ss")
+      console.log(formattedDate)
+      timer.textContent = formattedDate
 
 
       //Option 2: Conditional (Ternary) Operator
