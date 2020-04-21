@@ -16,25 +16,41 @@
     let timer = document.querySelector("#timer");
 
     function resetTime() {
+
       let date = new Date();
-      let h = date.getHours();
-      let m = date.getMinutes();
-      let s = date.getSeconds();
-      if(s < 10){
-      console.log(`${h}:${m}:0${s}`)
-      timer.textContent = `${h}:${m}:0${s}`
-      }
-      else {
-      console.log(`${h}:${m}:${s}`)
-      timer.textContent = `${h}:${m}:${s}`
-      }
-      //another way to write it
-      // return s < 10 ? timer.textContent = `${h}:${m}:0${s}` : timer.textContent = `${h}:${m}:${s}`
+
+      //Option 1: using moment.js
+      //Remember to add moment CDN to file (line 52)
+      // var formattedDate = moment(date).format("hh:mm:ss")
+      // console.log(formattedDate)
+      // timer.textContent = formattedDate
+
+
+      //Option 2: Conditional (Ternary) Operator
+      //https://www.w3schools.com/js/js_comparisons.asp
+      // let h = (date.getHours() < 10 ? "0" : "") + date.getHours();
+      // let m = (date.getMinutes()< 10 ? "0" : "") + date.getMinutes();
+      // let s = (date.getSeconds()< 10 ? "0" : "") + date.getSeconds();
+
+      // console.log(`${h}:${m}:${s}`)
+      // timer.textContent = `${h}:${m}:${s}`
+
+      //Option 3: using slice method
+      //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice
+      // let h = ("0" + date.getHours()).slice(-2);
+      // let m = ("0" + date.getMinutes()).slice(-2);
+      // let s = ("0" + date.getSeconds()).slice(-2);
+
+      // console.log(`${h}:${m}:${s}`)
+      // timer.textContent = `${h}:${m}:${s}`
     }
 
     setInterval(resetTime, 1000)
 
   </script>
+
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
 </body>
 
 </html>
